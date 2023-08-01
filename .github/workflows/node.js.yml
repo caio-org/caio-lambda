@@ -32,7 +32,7 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
     - run: cd src && npm ci
-    - run: zip -r publish.zip ./app/*
+    - run: zip -r publish.zip ./src/*
     - run: aws lambda update-function-code --function-name=express-ExpressFunction-rD5HMzcE6Gre --zip-file=fileb//publish.zip
 #     - run: npm run build --if-present
 #     - run: npm test
