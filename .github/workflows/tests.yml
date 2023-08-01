@@ -1,0 +1,19 @@
+name: Check Unit Tests
+on:
+  pull_request:
+    branches: [master, staging, developer]
+jobs:
+  build:
+    name: unit tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: cd app && npm ci
+    - run: cd app && npm test

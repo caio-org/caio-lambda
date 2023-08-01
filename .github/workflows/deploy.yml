@@ -1,19 +1,19 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
-name: Node.js CI
+name: Deploy Lambda Function
 
 on:
+  # push:
+  #   branches: [ "master" ]
   push:
-    branches: [ "master" ]
-#   pull_request:
-#     branches: [ "master" ]
+    branches: [master,staging, developer]
 
 jobs:
   build:
-
+    name: deploy lambda function
     runs-on: ubuntu-latest
-
+    enviroment: development
     strategy:
       matrix:
         node-version: [18.x]
@@ -25,14 +25,12 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    - run: cd app && npm test
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v2
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
-    - run: cd app && npm ci
     - run: zip -r publish.zip ./app/*
     - run: aws lambda update-function-code --function-name=express-ExpressTestFunction-u0xsqSaMnTqq --zip-file fileb://publish.zip
-    - run: npm run build --if-present
+    # - run: npm run build --if-present
