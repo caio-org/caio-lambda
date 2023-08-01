@@ -4,14 +4,14 @@
 name: Node.js CI
 
 on:
-  push:
-    branches: [ "master" ]
-#   pull_request:
-#     branches: [ "master" ]
+  # push:
+  #   branches: [ "master" ]
+  pull_request:
+    branches: [ "developer" ]
 
 jobs:
   build:
-
+    name: node test
     runs-on: ubuntu-latest
 
     strategy:
