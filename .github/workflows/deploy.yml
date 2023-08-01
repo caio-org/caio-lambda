@@ -13,7 +13,7 @@ jobs:
   build:
     name: deploy lambda function
     runs-on: ubuntu-latest
-    enviroment: development
+    environment: development
     strategy:
       matrix:
         node-version: [18.x]
