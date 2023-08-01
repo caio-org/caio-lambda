@@ -1,6 +1,6 @@
 const express = require('express')
 const serverless = require('serverless-http')
 const app = express()
-app.get('/test-ai', (req, res) => res.send('Hello caio guys!!!'))
+app.get('/test-ai', (req, res) => res.send('Hello caio guys another one!!!'))
 app.listen(3000, () => console.log('listening on port 3000'))
 module.exports.handler = serverless(app)
