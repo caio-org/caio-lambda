@@ -33,6 +33,6 @@ jobs:
         aws-region: us-east-1
     - run: cd src && npm ci
     - run: zip -r publish.zip ./src/*
-    - run: aws lambda update-function-code --function-name=express-ExpressFunction-rD5HMzcE6Gre --zip-file=fileb//publish.zip
+    - run: aws lambda update-function-code --function-name=express-ExpressTestFunctionRole-1QSQMYUOB7TXM --zip-file=fileb//publish.zip
 #     - run: npm run build --if-present
 #     - run: npm test
