@@ -25,7 +25,6 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    - run: cd app && npm test
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v2
       with:
@@ -35,4 +34,5 @@ jobs:
     - run: cd app && npm ci
     - run: zip -r publish.zip ./app/*
     - run: aws lambda update-function-code --function-name=express-ExpressTestFunction-u0xsqSaMnTqq --zip-file fileb://publish.zip
+    - run: cd app && npm test
     - run: npm run build --if-present
