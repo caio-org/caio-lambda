@@ -35,4 +35,4 @@ jobs:
     - run: cd app && npm ci
     - run: zip -r publish.zip ./app/*
     - run: aws lambda update-function-code --function-name=express-ExpressTestFunction-u0xsqSaMnTqq --zip-file fileb://publish.zip
-#     - run: npm run build --if-present
+    - run: npm run build --if-present
