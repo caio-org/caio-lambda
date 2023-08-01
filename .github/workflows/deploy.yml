@@ -4,10 +4,7 @@
 name: Deploy Lambda Function
 
 on:
-  # push:
-  #   branches: [ "master" ]
-  push:
-    branches: [master,staging, developer]
+  branches: [master,staging,developer]
 
 jobs:
   build:
@@ -33,4 +30,3 @@ jobs:
         aws-region: us-east-1
     - run: zip -r publish.zip ./app/*
     - run: aws lambda update-function-code --function-name=express-ExpressTestFunction-u0xsqSaMnTqq --zip-file fileb://publish.zip
-    # - run: npm run build --if-present
